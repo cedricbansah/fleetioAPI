@@ -59,7 +59,7 @@ public class Deserialize {
 
 
         // display response as new formatted string
-        System.out.println(prettyJsonString);
+//        System.out.println(prettyJsonString);
 
 
 
