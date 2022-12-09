@@ -73,11 +73,11 @@ public class Deserialize {
 
 
         // print out object values to check if properties mapped successfully
-        System.out.println("Car Name: " + myCar.getName());
+        /*System.out.println("Car Name: " + myCar.getName());
         System.out.println("License Plate: " + myCar.getLicense_plate());
         System.out.println("Color: " + myCar.getColor());
         System.out.println("Specs Account ID: " + myCar.getSpecs().getAccountId());
         System.out.println("Specs Vehicle ID: " + myCar.getSpecs().getVehicleId());
-        System.out.println("Specs Body Type: " + myCar.getSpecs().getBodyType());
+        System.out.println("Specs Body Type: " + myCar.getSpecs().getBodyType());*/
     }
 }
