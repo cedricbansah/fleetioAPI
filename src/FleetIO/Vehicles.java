@@ -7,7 +7,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Map;
 
-@Data // wrap objects of class as data item
+//@Data // wrap objects of class as data item
 
 // ignore undeclared fields in api response body
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -18,10 +18,6 @@ public class Vehicles implements Serializable {
 
 
     // all api properties and their corresponding attributes in Vehicles class
-    /*
-    @JsonProperty("archived_at")
-    public String archived_at;
-    */
 
     public Integer getAccount_id() {
         return account_id;
