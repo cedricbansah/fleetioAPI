@@ -73,5 +73,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="log4j" level="project" />
+    <orderEntry type="library" name="github.jdbc.json.cb" level="project" />
   </component>
 </module>

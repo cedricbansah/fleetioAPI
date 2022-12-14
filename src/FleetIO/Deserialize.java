@@ -15,19 +15,18 @@ public class Deserialize {
 
     static Logger log = Logger.getLogger(Deserialize.class);
     public static void main (String [] args) throws InterruptedException, IOException {
-        log.setLevel(Level.DEBUG);
 
         // create an HttpRequest object to make a new request to the api
         log.debug("Sending HTTP request to API");
         HttpRequest cNANA = HttpRequest.newBuilder()
 
                 // pass api url here with the necessary parameters
-                .uri(URI.create("https://secure.fleetio.com/api/v1/vehicles?q[model_matches]=prius"))
+                .uri(URI.create("https://secure.fleetio.com/api/v1/vehicles?q[license_plate_eq]=GR3330-11"))
 
                 // add header values
                 .header("accept", "application/json")
-                .header("Authorization", "Token 5fd4c3bbc8ac14dbfd2f1381adac3f0fa6e03ce3")
-                .header("Account-Token", "9e82f2090f")
+                .header("Authorization", "Token 463227032b0367550695cf350481eb81d9df46af")
+                .header("Account-Token", "4cf4569fb1")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
         log.info("HTTP request sent to API successfully");
@@ -72,12 +71,12 @@ public class Deserialize {
         log.info("New vehicle created and mapped to JSON response successfully");
 
 
-        // print out object values to check if properties mapped successfully
-        /*System.out.println("Car Name: " + myCar.getName());
-        System.out.println("License Plate: " + myCar.getLicense_plate());
-        System.out.println("Color: " + myCar.getColor());
-        System.out.println("Specs Account ID: " + myCar.getSpecs().getAccountId());
-        System.out.println("Specs Vehicle ID: " + myCar.getSpecs().getVehicleId());
-        System.out.println("Specs Body Type: " + myCar.getSpecs().getBodyType());*/
+//         print out object values to check if properties mapped successfully
+         System.out.println("Car Name: " + myCar.getName());
+         System.out.println("License Plate: " + myCar.getLicense_plate());
+         System.out.println("Color: " + myCar.getColor());
+         System.out.println("Specs Account ID: " + myCar.getSpecs().getAccountId());
+         System.out.println("Specs Vehicle ID: " + myCar.getSpecs().getVehicleId());
+         System.out.println("Specs Body Type: " + myCar.getSpecs().getBodyType());
     }
 }

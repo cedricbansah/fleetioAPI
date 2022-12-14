@@ -12,7 +12,7 @@ import java.util.Map;
 // ignore undeclared fields in api response body
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-
+@Data
 // class declared to implement serializable interface
 public class Vehicles implements Serializable {
 
@@ -62,14 +62,6 @@ public class Vehicles implements Serializable {
     public void setSpecs(Specs specs) {
         this.specs = specs;
     }
-/*
-    @JsonProperty("vehicle_id")
-    public int vehicle_id;
-
-    //@JsonProperty("account_id")
-    //public int account_id;
-     */
-
 
 
     // getters and setters for class attributes
@@ -129,17 +121,6 @@ public class Vehicles implements Serializable {
         this.id = id;
     }
 
-    /*
-    public String getArchived_at() {
-        return archived_at;
-    }
-
-
-
-    public void setArchived_at(String archived_at) {
-        this.archived_at = archived_at;
-    }
-     */
 
     public String getVehicle_type_name() {
         return vehicle_type_name;
@@ -154,17 +135,6 @@ public class Vehicles implements Serializable {
     }
 
 
-
-    /*
-    public void setAccount_id(Integer account_id) {
-        this.account_id = account_id;
-    }
-
-    @JsonProperty("specs")
-    private void getAccount_id(Map<String, Integer> specs) {
-        account_id = specs.get("account_id");
-    }
-     */
 
 
 
