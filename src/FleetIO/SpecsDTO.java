@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SpecsDTO {
 
+    @JsonProperty("vehicle_id")
+    private int vehicleId;
+
     @JsonProperty("body_type")
     private String bodyType;
 

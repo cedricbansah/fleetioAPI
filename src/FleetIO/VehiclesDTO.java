@@ -3,13 +3,9 @@ package FleetIO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import lombok.Builder;
 import lombok.Data;
-import lombok.Value;
-import org.boon.Str;
 
 import java.io.Serializable;
-import java.util.*;
 
 @Data
 @JsonDeserialize
@@ -39,34 +35,6 @@ public class VehiclesDTO implements Serializable {
 
     public SpecsDTO getSpecs() {
         return Specs;
-    }
-
-    public void setSpecs(SpecsDTO specs) {
-        Specs = specs;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLicensePlate(String licensePlate) {
-        this.licensePlate = licensePlate;
-    }
-
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public int getId() {
