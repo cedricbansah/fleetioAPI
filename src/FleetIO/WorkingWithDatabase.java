@@ -54,7 +54,7 @@ public class WorkingWithDatabase {
 
 
         dblog.debug("Establishing connection");
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "p@$$w0rd1");
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "*********");
         dblog.info("Connection established");
 
         String query = "INSERT into vehicles(id, name, licensePlate, make, model, color)" +
