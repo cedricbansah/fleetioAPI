@@ -36,4 +36,8 @@ public class SpecsDTO {
     public String getMaxHP() {
         return maxHP;
     }
+
+    public int getVehicleId() {
+        return vehicleId;
+    }
 }

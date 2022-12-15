@@ -60,4 +60,7 @@ public class VehiclesDTO implements Serializable {
     public String getColor() {
         return color;
     }
+
+
+
 }

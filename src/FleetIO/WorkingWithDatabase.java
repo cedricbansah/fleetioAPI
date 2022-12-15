@@ -10,6 +10,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.sql.*;
+import java.util.Arrays;
 
 public class WorkingWithDatabase {
     static Logger dblog = Logger.getLogger(WorkingWithDatabase.class);
@@ -36,9 +37,6 @@ public class WorkingWithDatabase {
 
         String rawBody = response.body();
 
-//        JsonElement rawBodyJSON = JsonParser.parseString(rawBody);
-//        String bodyJSON = rawBodyJSON.toString().substring(1, (rawBodyJSON.toString().length()-1));
-
 
         dblog.debug("Creating new Object Mapper");
         ObjectMapper mapper = new ObjectMapper();
@@ -53,40 +51,105 @@ public class WorkingWithDatabase {
         dblog.info("Array object created");
 
 
+        //populateVehiclesDB(vehiclesDTO);
+        populateSpecsDB(vehiclesDTO);
+
+
+
+
+    }
+
+
+
+
+
+    public static void populateVehiclesDB(VehiclesDTO[] dtos) throws SQLException {
         dblog.debug("Establishing connection");
         Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "p@$$w0rd1");
+        connection.setAutoCommit(true);
         dblog.info("Connection established");
 
-        String query = "INSERT into vehicles(id, name, licensePlate, make, model, color)" +
-                " VALUES (?, ?, ?,?,?,?)";
+        String query = "INSERT INTO vehicles(id, name, license_plate, make, model, color)" +
+                " VALUES" + "(?, ?, ?,?,?,?)";
 
 
         dblog.debug("Running query");
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         dblog.info("Query ran successfully");
 
+        int vlen = dtos.length;
+        System.out.println(vlen);
+
 
         dblog.debug("Mapping table columns to their values in DTO Array");
-        for (int i=0; i<vehiclesDTO.length; i++) {
+        for (int i=0; i<dtos.length; i++) {
 
-            preparedStatement.setInt(1, vehiclesDTO[i].getId());
+            preparedStatement.setInt(1, dtos[i].getId());
 
-            preparedStatement.setString(2, vehiclesDTO[i].getName());
+            preparedStatement.setString(2, dtos[i].getName());
 
-            preparedStatement.setString(3, vehiclesDTO[i].getLicensePlate());
+            preparedStatement.setString(3, dtos[i].getLicensePlate());
 
-            preparedStatement.setString(4, vehiclesDTO[i].getMake());
+            preparedStatement.setString(4, dtos[i].getMake());
 
-            preparedStatement.setString(5, vehiclesDTO[i].getModel());
+            preparedStatement.setString(5, dtos[i].getModel());
 
-            preparedStatement.setString(6, vehiclesDTO[i].getColor());
+            preparedStatement.setString(6, dtos[i].getColor());
+
+            preparedStatement.execute();
+
 
         }
-        dblog.info("Values mapped to Table columns");
-
 
         preparedStatement.close();
         connection.close();
 
+
+
+
+
+    }
+
+
+
+
+
+    public static void populateSpecsDB(VehiclesDTO[] specsDTOS) throws SQLException {
+
+        dblog.debug("Establishing connection");
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "p@$$w0rd1");
+        dblog.info("Connection established");
+
+        String query = "INSERT INTO specs(vehicle_id, body_type, drive_type, engine_description, max_hp)" +
+                " VALUES" + "(?, ?, ?, ?, ?)";
+
+
+        dblog.debug("Running query");
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        dblog.info("Query ran successfully");
+
+        int len = specsDTOS.length;
+        System.out.println(len);
+
+        dblog.debug("Mapping table columns to their values in DTO Array");
+        for (int i = 0; i < specsDTOS.length; i++) {
+
+            preparedStatement.setInt(1, specsDTOS[i].getSpecs().getVehicleId());
+
+            preparedStatement.setString(2, specsDTOS[i].getSpecs().getBodyType());
+
+            preparedStatement.setString(3, specsDTOS[i].getSpecs().getDriveType());
+
+            preparedStatement.setString(4, specsDTOS[i].getSpecs().getEngineDescription());
+
+            preparedStatement.setString(5, specsDTOS[i].getSpecs().getMaxHP());
+
+            preparedStatement.execute();
+
+
+        }
+
+        preparedStatement.close();
+        connection.close();
     }
 }
