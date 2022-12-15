@@ -54,39 +54,39 @@ public class WorkingWithDatabase {
 
 
         dblog.debug("Establishing connection");
-        Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres");
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "p@$$w0rd1");
         dblog.info("Connection established");
 
-        String query = "INSERT into postgres.vehicles(id, name, licensePlate, make, model, color)" +
+        String query = "INSERT into vehicles(id, name, licensePlate, make, model, color)" +
                 " VALUES (?, ?, ?,?,?,?)";
 
 
         dblog.debug("Running query");
-        PreparedStatement ps = con.prepareStatement(query);
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
         dblog.info("Query ran successfully");
 
 
         dblog.debug("Mapping table columns to their values in DTO Array");
-        for (int i=1; i<=vehiclesDTO.length; i++) {
+        for (int i=0; i<vehiclesDTO.length; i++) {
 
-            ps.setInt(1, vehiclesDTO[i].getId());
+            preparedStatement.setInt(1, vehiclesDTO[i].getId());
 
-            ps.setString(2, vehiclesDTO[i].getName());
+            preparedStatement.setString(2, vehiclesDTO[i].getName());
 
-            ps.setString(3, vehiclesDTO[i].getLicensePlate());
+            preparedStatement.setString(3, vehiclesDTO[i].getLicensePlate());
 
-            ps.setString(4, vehiclesDTO[i].getMake());
+            preparedStatement.setString(4, vehiclesDTO[i].getMake());
 
-            ps.setString(5, vehiclesDTO[i].getModel());
+            preparedStatement.setString(5, vehiclesDTO[i].getModel());
 
-            ps.setString(6, vehiclesDTO[i].getColor());
+            preparedStatement.setString(6, vehiclesDTO[i].getColor());
 
         }
         dblog.info("Values mapped to Table columns");
 
 
-        ps.close();
-        con.close();
+        preparedStatement.close();
+        connection.close();
 
     }
 }

@@ -74,5 +74,6 @@
     </orderEntry>
     <orderEntry type="library" name="log4j" level="project" />
     <orderEntry type="library" name="github.jdbc.json.cb" level="project" />
+    <orderEntry type="library" name="postgresql-42.5.1" level="project" />
   </component>
 </module>
