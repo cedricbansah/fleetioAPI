@@ -51,7 +51,7 @@ public class WorkingWithDatabase {
         dblog.info("Array object created");
 
 
-        //populateVehiclesDB(vehiclesDTO);
+        populateVehiclesDB(vehiclesDTO);
         populateSpecsDB(vehiclesDTO);
 
 
