@@ -65,7 +65,7 @@ public class WorkingWithDatabase {
 
     public static void populateVehiclesDB(VehiclesDTO[] dtos) throws SQLException {
         dblog.debug("Establishing connection");
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "p@$$w0rd1");
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "********");
         connection.setAutoCommit(true);
         dblog.info("Connection established");
 
@@ -117,7 +117,7 @@ public class WorkingWithDatabase {
     public static void populateSpecsDB(VehiclesDTO[] specsDTOS) throws SQLException {
 
         dblog.debug("Establishing connection");
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "p@$$w0rd1");
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "********");
         dblog.info("Connection established");
 
         String query = "INSERT INTO specs(vehicle_id, body_type, drive_type, engine_description, max_hp)" +
